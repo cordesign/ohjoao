@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Informação recente acerca de tecnologia">
+
+    <title>D3.js: Os Básicos - Oh João!</title>
+
+    <link rel="canonical" href="http://cordesign.github.io/ohjoao/2017/08/28/d3js/">
+    
+    <link rel="icon" type="image/x-icon" href="/ohjoao/favicon.ico" />
+    
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/ohjoao/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/ohjoao/css/clean-blog.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/ohjoao/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link type="application/atom+xml" rel="alternate" href="http://cordesign.github.io/ohjoao/feed.xml" title="Oh João!" />
+
+</head>
+
+
+<body>
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top" style="z-index: 21">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/ohjoao/">Oh João!</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/ohjoao/">Página Inicial</a>
+                </li>
+                
+				
+                <li>
+                    <a href="/ohjoao/contacto/">Contacto</a>
+                </li>
+				
+                
+				
+                <li>
+                    <a href="/ohjoao/sobre/">Sobre Mim</a>
+                </li>
+				
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+
+    <!-- Post Header -->
+<header class="intro-header" style="background-image: url('/ohjoao/img/d3.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>D3.js: Os Básicos</h1>
+                    
+                    <h2 class="subheading">Descobre como usar a biblioteca D3.js para criar gráficos</h2>
+                    
+                    <span class="meta">Posted by Vasco Silva on August 28, 2017</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+				<p>D3 é um acrónimo para Data Driven Documents e é uma biblioteca javascript feita para criar SVGs que funcionam com os padrões de HTML5 e CCS3</p>
+
+<p>SVG significa Scalable Vector Graphics e é um formato de imagem baseado no XML para criar imagens na internet, que foi adoptado pelo W3C em 1999. Ao contrário de imagens rasterizadas (.jpeg, .gif, .png, etc), os SVGs elementos HTML são renderizados pelo browser e nunca perdem qualidade. </p>
+
+<p>SVG funciona num sitemas de coordenadas em que a origem é o canto superior esquerdo e o ponto máximo é o canto inferior direito, sendo que o X corre ao longo do comprimento e o Y ao longo da altura.</p>
+
+<h2 class="section-heading">Desenhar Figuras</h2>
+
+<p>O primeiro passo para começar a usar D3 é importar a biblioteca para o documento html, a forma mais simples é adicionar o código seguinte:</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://d3js.org/d3.v4.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre>
+</div>
+
+<p>No próximo bloco de código temos HTML seguido do D3, ambos fazem a mesma coisa, desenham um rectângulo vermelho de comprimento 50 e altura 200.</p>
+
+<p>Apesar do D3 parecer mais complicado, a principal vantagem é usar javascript que nos permite fazer coisas mais complexas como chamar outras APIs, buscar dados de outras fontes e fazer as coisas de forma muito dinâmica. </p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;svg&gt;</span>
+    <span class="nt">&lt;rect</span> <span class="na">width=</span><span class="s">"50"</span> <span class="na">height=</span><span class="s">"200"</span> <span class="na">style=</span><span class="s">"fill: red;"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/svg&gt;</span>
+</code></pre>
+</div>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">d3</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s2">"body"</span><span class="p">)</span> <span class="c1">// seleciona o elemento html &lt;body&gt;</span>
+  <span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">"svg"</span><span class="p">)</span> <span class="c1">// adiciona um elemento html &lt;svg&gt;</span>
+  <span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">"rect"</span><span class="p">)</span> <span class="c1">// adiciona um elemento svg &lt;rect&gt;</span>
+    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"width"</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span> <span class="c1">// define o atributo de comprimento</span>
+    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"height"</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span> <span class="c1">// define o atributo de largura</span>
+    <span class="p">.</span><span class="nx">style</span><span class="p">(</span><span class="s2">"fill"</span><span class="p">,</span> <span class="s2">"red"</span><span class="p">);</span> <span class="c1">// add some style</span>
+</code></pre>
+</div>
+
+<p><span class="caption text-muted">Resultado:</span></p>
+
+<svg width="50" height="200">
+    <rect width="50" height="200" style="fill: red;" />
+</svg>
+
+<p>No próximo exemplo temos um círculo, desta vez definimos o tamanho do SVG, utilizamos coordenadas para o posicionar e o raio para o tamanho. Tal como no exemplo anterior ambos os códigos fazem a mesma coisa, só que o primeiro é escrito em HTML e o segundo em D3.</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;svg</span> <span class="na">width=</span><span class="s">"50"</span> <span class="na">height=</span><span class="s">"50"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;circle</span> <span class="na">cx=</span><span class="s">"25"</span> <span class="na">cy=</span><span class="s">"25"</span> <span class="na">r=</span><span class="s">"25"</span> <span class="na">style=</span><span class="s">"fill: blue"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/svg&gt;</span>
+</code></pre>
+</div>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">d3</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s2">"body"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">"svg"</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"width"</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"height"</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">"circle"</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"cx"</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"cy"</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"r"</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">style</span><span class="p">(</span><span class="s2">"fill"</span><span class="p">,</span> <span class="s2">"blue"</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p><span class="caption text-muted">Resultado.</span></p>
+
+<svg width="50" height="50">
+    <circle cx="25" cy="25" r="25" style="fill: blue" />
+</svg>
+
+<p>O texto, tal como o círculo mas ao contrário do rectângulo, precisam de coordenadas x e y para poder desenhâ-los.</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;svg</span> <span class="na">width=</span><span class="s">"250"</span> <span class="na">height=</span><span class="s">"50"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;text</span> <span class="na">x=</span><span class="s">"0"</span> <span class="na">y=</span><span class="s">"25"</span> <span class="na">style=</span><span class="s">"fill: blue"</span><span class="nt">&gt;</span>Easy Peasy<span class="nt">&lt;/text&gt;</span>
+<span class="nt">&lt;/svg&gt;</span>
+</code></pre>
+</div>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">d3</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s2">"body"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">"svg"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"width"</span><span class="p">,</span> <span class="mi">250</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"height"</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">"text"</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="s2">"Easy Easy"</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"x"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"y"</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">style</span><span class="p">(</span><span class="s2">"fill"</span><span class="p">,</span> <span class="s2">"blue"</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p><span class="caption text-muted">Resultado.</span></p>
+
+<svg width="250" height="50">
+    <text x="0" y="25" style="fill: blue">Easy Peasy</text>
+</svg>
+
+<h2 class="section-heading">Desenhar com Dados</h2>
+
+<p>No exemplo em baixo usamos dados para desenhar os nossos SVGs. Começamos por introduzir o conceito de variáveis. 'w' e 'h' representam o comprimento e a largura do nosso SVG, 'padding' dá um espaço entre as figuras, 'dataset' é um array com os dados que vamos usar e finalmente a variável 'svg' com a informação do nosso SVG. </p>
+
+<p>Depois queremos adicionar rectângulos ao nosso SVG, a função 'selectAll' seleciona todos os rectângulos, a função 'data' específica onde vai buscar os dados e a função 'enter' cria os rectângulos caso não existam. </p>
+
+<p>Para o x temos uma função que aceita os parâmetros 'd' e 'i'. 'd' devolve o valor de um dado do array e 'i' o seu índice, neste caso muda a coordenada x com base na posição do array e ajusta-se automaticamente de acordo com o tamanho do SVG e a quantidade de dados no array.</p>
+
+<p>Para o y há o dilema de como o sistema de coordenadas funciona, queremos que o y seja a altura menos o valor dos dados para inverter os rectângulos para aparecerem de cima para baixo, sem subtrair a altura as barras iriam ficar ao contrário.</p>
+
+<p>Finalmente o d * 4 serve para aumentar proporcionalmente o tamanho das barras.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">w</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">h</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">padding</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">dataset</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">];</span>
+    <span class="kd">var</span> <span class="nx">svg</span> <span class="o">=</span> <span class="nx">d3</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s2">"body"</span><span class="p">)</span>
+                <span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">"svg"</span><span class="p">)</span>
+                <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"width"</span><span class="p">,</span> <span class="nx">w</span><span class="p">)</span>
+                <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"height"</span><span class="p">,</span> <span class="nx">h</span><span class="p">);</span>
+
+    <span class="nx">svg</span><span class="p">.</span><span class="nx">selectAll</span><span class="p">(</span><span class="s2">"rect"</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="nx">dataset</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">enter</span><span class="p">()</span>
+        <span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">"rect"</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"x"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">i</span> <span class="o">*</span> <span class="p">(</span><span class="nx">w</span> <span class="o">/</span> <span class="nx">dataset</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+        <span class="p">})</span>
+        <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"y"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">){</span>
+            <span class="k">return</span> <span class="nx">h</span> <span class="o">-</span> <span class="p">(</span><span class="nx">d</span> <span class="o">*</span> <span class="mi">4</span><span class="p">);</span>
+        <span class="p">})</span>
+        <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"width"</span><span class="p">,</span> <span class="nx">w</span> <span class="o">/</span> <span class="nx">dataset</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="nx">padding</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">"height"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">d</span> <span class="o">*</span> <span class="mi">4</span><span class="p">;</span>
+        <span class="p">});</span>
+<span class="p">})();</span>
+
+</code></pre>
+</div>
+<p><span class="caption text-muted">Resultado.</span></p>
+
+<svg width="100" height="100"><rect x="0" y="80" width="18" height="20"></rect><rect x="20" y="60" width="18" height="40"></rect><rect x="40" y="40" width="18" height="60"></rect><rect x="60" y="20" width="18" height="80"></rect><rect x="80" y="0" width="18" height="100"></rect></svg>
+
+
+
+                <hr>
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/ohjoao/2017/08/24/blockchain/" data-toggle="tooltip" data-placement="top" title="Blockchain: Conceitos Básicos">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+<hr>
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="/ohjoao/feed.xml">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://twitter.com/NGlobais">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://www.facebook.com/vasco.silvah">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://github.com/cordesign">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="mailto:vasco.feeney@icloud.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-muted">Copyright &copy; Oh João! 2017</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/ohjoao/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/ohjoao/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/ohjoao/js/clean-blog.min.js "></script>
+
+
+    
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-105592564-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+</body>
+
+</html>
